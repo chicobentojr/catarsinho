@@ -5,7 +5,7 @@ import simpleStore from './simpleStore'
 let instance = axios.create({
   baseURL: API_URL,
   headers: {
-    'Authorization': localStorage.token ? `JWT ${localStorage.token}` : ''
+    'Authorization': localStorage.token && localStorage.token !== "null" ? `JWT ${localStorage.token}` : ''
   }
 });
 
@@ -36,8 +36,8 @@ const authUser = (username, password) => {
 }
 
 const logoutUser = () => {
-  setToken(null)
-  simpleStore.setUser(null, null)
+  setToken('')
+  simpleStore.setUser('', '')
 }
 
 const loadUserProjects = () => instance.get('myprojects/');

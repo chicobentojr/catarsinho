@@ -1,7 +1,7 @@
 let user = {
-  username: localStorage.username,
-  isAuthenticated: localStorage.isAuthenticated,
-  token: localStorage.token
+  username: localStorage.username && localStorage.username !== "null" ? localStorage.username : '',
+  isAuthenticated: localStorage.isAuthenticated && localStorage.isAuthenticated !== "null" ? localStorage.isAuthenticated : false,
+  token: localStorage.token && localStorage.token !== "null" ? localStorage.token : ''
 }
 
 const setUser = (username, token) => {
