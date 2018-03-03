@@ -24,7 +24,6 @@ class LoginPage extends Component {
     this.setState({loading: true, warning: false});
 
     api.authUser(this.state.username, this.state.password).then((response => {
-      console.log(response);
       this.setState({loading: false});
       this.props.history.push('/myprojects');
     })).catch((error) => {

@@ -18,9 +18,9 @@ class ProjectsPage extends Component {
     })
   }
 
-  __renderProjectCard(project) {
+  __renderProjectCard(project, index) {
     return (
-      <ProjectCard {...project} />
+      <ProjectCard key={index} {...project} />
     )
   }
 
