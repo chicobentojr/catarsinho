@@ -14,7 +14,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProjectViewSet(viewsets.ModelViewSet):
 
     permission_classes = (permissions.AllowAny,)
-    queryset = Project.objects.all()
+    queryset = Project.objects.order_by('-created_at').all()
     serializer_class = ProjectSerializer
 
 
@@ -23,4 +23,4 @@ class AllProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
 
     def get_queryset(self):
-        return Project.objects.filter(user=self.request.user).all()
+        return Project.objects.filter(user=self.request.user).order_by('-created_at').all()
