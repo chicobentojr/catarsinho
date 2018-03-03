@@ -12,13 +12,13 @@ const Header = () => {
         </Menu.Item>
 
         {simpleStore.user.isAuthenticated ? (
-          <Menu.Menu position='right' color='green' inverted>
-            <Menu.Item as='a'><Link to='myprojects'>My Projects</Link></Menu.Item>
-            <Menu.Item as='a'><Link to='logout'>Logout</Link></Menu.Item>
+          <Menu.Menu position='right'>
+            <Menu.Item as='a'><Link to='/myprojects'>My Projects</Link></Menu.Item>
+            <Menu.Item as='a'><Link to='/logout'>Logout</Link></Menu.Item>
           </Menu.Menu>
         ) : (
-          <Menu.Menu position='right' color='green' inverted>
-            <Menu.Item as='a'><Link to='login'>Login</Link></Menu.Item>
+          <Menu.Menu position='right'>
+            <Menu.Item as='a'><Link to='/login'>Login</Link></Menu.Item>
           </Menu.Menu>
         )}
       </Container>

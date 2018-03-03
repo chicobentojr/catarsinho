@@ -41,10 +41,15 @@ const logoutUser = () => {
 const loadUserProjects = () => instance.get('myprojects/');
 const loadProjects = () => instance.get('projects/');
 
+const createProject = (project) => {
+  return instance.post('projects/', {...project});
+}
+
 export default {
   registerUser,
   authUser,
   loadUserProjects,
   logoutUser,
-  loadProjects
+  loadProjects,
+  createProject
 }

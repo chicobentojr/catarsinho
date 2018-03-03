@@ -39,7 +39,7 @@ class LoginPage extends Component {
               <label>Username</label>
               <input onChange={(e) => { this.setState({username: e.target.value })}} placeholder='username' required />
             </Form.Field>
-            <Form.Field error>
+            <Form.Field>
               <label>Password</label>
               <input onChange={(e) => { this.setState({password: e.target.value })}} type='password' placeholder='Password' required />
             </Form.Field>
