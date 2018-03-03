@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Menu fixed='top' color='green' inverted>
       <Container>
-        <Menu.Item as='a' header>
+        <Menu.Item as='h3' header>
           <Link to='/'>Catarsinho</Link>
         </Menu.Item>
 
