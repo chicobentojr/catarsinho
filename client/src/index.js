@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import 'semantic-ui-css/semantic.min.css';
-import App from './containers/App';
+import 'moment/locale/pt-br';
+
 import ProjectsPage from './containers/ProjectsPage';
 import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';

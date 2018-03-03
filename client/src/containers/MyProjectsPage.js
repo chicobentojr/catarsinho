@@ -18,6 +18,7 @@ class MyProjectsPage extends Component {
       this.setState({ projects: response.data, loading: false});
     }).catch((error) => {
       console.log(error);
+      this.setState({loading: false});
     })
   }
 
@@ -32,14 +33,14 @@ class MyProjectsPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>My Projects</SemanticHeader>
+          <SemanticHeader size='large'>Meus Projetos</SemanticHeader>
           <Segment loading={this.state.loading}>
             {this.state.projects.length > 0 ? (
               this.state.projects.map(this.__renderProjectCard)
             ) : (
               <div>
-                <SemanticHeader size='medium'>You don't have any project created.</SemanticHeader>
-                <Link to='/myprojects/create'>Create now</Link>
+                <SemanticHeader size='medium'>Você ainda não tem nenhum projeto cadastrado.</SemanticHeader>
+                <Link to='/myprojects/create'>Crie agora.</Link>
               </div>
             )}
           </Segment>

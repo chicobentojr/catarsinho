@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Form, Button, Segment,
-  Message, Header as SemanticHeader } from 'semantic-ui-react';
+import { Container, Form, Button, Segment, Header as SemanticHeader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import FormMessages from '../components/FormMessages';
 import api from '../utils/api';
 
 class LoginPage extends Component {
@@ -44,23 +44,16 @@ class LoginPage extends Component {
               onSubmit={this.__handleSubmit} loading={this.state.loading}
               error={this.state.error} warning={this.state.warning}>
             <Form.Field>
-              <label>Username</label>
-              <input onChange={(e) => { this.setState({username: e.target.value })}} placeholder='username' required />
+              <label>Usuário</label>
+              <input onChange={(e) => { this.setState({username: e.target.value })}} placeholder='Usuário' required />
             </Form.Field>
             <Form.Field>
-              <label>Password</label>
-              <input onChange={(e) => { this.setState({password: e.target.value })}} type='password' placeholder='Password' required/>
+              <label>Senha</label>
+              <input onChange={(e) => { this.setState({password: e.target.value })}} type='password' placeholder='Senha' required/>
             </Form.Field>
-            <Button type='submit'>Login</Button>
-            <p>Don't have an account? <Link to='/register'>Click here</Link></p>
-            <Message error>
-              <Message.Header>Something bad happened :(</Message.Header>
-              <p>Please try again later.</p>
-            </Message>
-            <Message warning>
-              <Message.Header>There are missing fields!</Message.Header>
-              <p>Please, fill the entire form before submit.</p>
-            </Message>
+            <Button primary type='submit'>Login</Button>
+            <p>Não tem uma conta? <Link to='/register'>Registre-se aqui!</Link></p>
+            <FormMessages />
           </Form>
           </Segment>
         </Container>

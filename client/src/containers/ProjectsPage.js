@@ -29,7 +29,7 @@ class ProjectsPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>New Projects</SemanticHeader>
+          <SemanticHeader size='large'>Projetos Recentes</SemanticHeader>
           <Segment loading={this.state.loading}>
             {this.state.projects.map(this.__renderProjectCard)}
           </Segment>

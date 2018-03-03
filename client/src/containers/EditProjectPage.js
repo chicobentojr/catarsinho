@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {
   Container, Form, Button, Dimmer, Image, Segment,
   Header as SemanticHeader, TextArea,
-  Input, Label, Message
+  Input, Label
 } from 'semantic-ui-react';
 import Header from '../components/Header';
+import FormMessages from '../components/FormMessages';
 import api from '../utils/api';
 
 class EditProjectPage extends Component {
@@ -69,7 +70,7 @@ class EditProjectPage extends Component {
       this.setState({loading: false, ...response.data});
     })).catch((error) => {
       console.log(error);
-      this.setState({loading: false});
+      this.props.history.push('/');
     })
   }
 
@@ -78,52 +79,42 @@ class EditProjectPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>Edit Project {this.state.title}</SemanticHeader>
+          <SemanticHeader size='large'>Editar Projeto</SemanticHeader>
           <Segment>
             <Form
               onSubmit={this.__handleSubmit} loading={this.state.loading}
               error={this.state.error} warning={this.state.warning}>
-              <Message error>
-                <Message.Header>Something bad happened :(</Message.Header>
-                <p>Please try again later.</p>
-              </Message>
-              <Message warning>
-                <Message.Header>There are missing fields!</Message.Header>
-                <p>Please, fill the entire form before submit.</p>
-              </Message>
+              <FormMessages />
               <Form.Field>
-                <label>Image</label>
-                <input hidden type='file' ref={(ref) => {this.fileUpload = ref}} onChange={this.__onUpdateImage} placeholder='Image' required />
+                <label>Imagem</label>
+                <input hidden type='file' ref={(ref) => {this.fileUpload = ref}} onChange={this.__onUpdateImage} />
                 <Dimmer.Dimmable dimmed={this.state.dimmerActive}
                   onMouseEnter={() => this.setState({dimmerActive: true})}
                   onMouseLeave={() => this.setState({dimmerActive: false})} >
                   <Dimmer active={this.state.dimmerActive}>
-                    <SemanticHeader as='h2' inverted>
-                      Add an image for you project
-                    </SemanticHeader>
-                    <Button primary as='a' onClick={this.__handleAddImage}>Add</Button>
+                    <Button primary as='a' onClick={this.__handleAddImage}>Alterar Imagem</Button>
                   </Dimmer>
                 <Image fluid src={this.state.image ? this.state.image : 'http://via.placeholder.com/700x300'} />
                 </Dimmer.Dimmable>
               </Form.Field>
               <Form.Field>
-                <label>Title</label>
-                <input value={this.state.title} onChange={(e) => { this.setState({title: e.target.value })}} placeholder='Title' required />
+                <label>Título</label>
+                <input value={this.state.title} onChange={(e) => { this.setState({title: e.target.value })}} placeholder='Título' required />
               </Form.Field>
               <Form.Field>
-                <label>Description</label>
-                <TextArea value={this.state.description} onChange={(e) => { this.setState({description: e.target.value })}} maxLength='300' placeholder='Description' required />
+                <label>Descrição</label>
+                <TextArea value={this.state.description} onChange={(e) => { this.setState({description: e.target.value })}} maxLength='300' placeholder='Descrição' required />
               </Form.Field>
               <Form.Field>
-                <label>Value</label>
+                <label>Valor</label>
                   <Input value={this.state.value} onChange={(e) => { this.setState({value: e.target.value })}}
-                    labelPosition='right' type='number' max='500' placeholder='Value' required>
+                    labelPosition='right' type='number' max='500' placeholder='Valor' required>
                     <Label basic>$</Label>
                     <input />
                     <Label>,00</Label>
                   </Input>
               </Form.Field>
-              <Button type='submit'>Update</Button>
+              <Button primary type='submit'>Editar</Button>
             </Form>
           </Segment>
         </Container>

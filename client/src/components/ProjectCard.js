@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import Moment from 'react-moment';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const ProjectCard = ({id, title, description, value, image, created_at, user, sh
      <Card.Content>
        <Card.Header as='a'>{title}</Card.Header>
        <Card.Meta>
-         {moment(created_at).fromNow()}
+         <Moment locale='pt-br' fromNow>{created_at}</Moment>
        </Card.Meta>
        <Card.Description>{description}</Card.Description>
      </Card.Content>
@@ -20,7 +20,7 @@ const ProjectCard = ({id, title, description, value, image, created_at, user, sh
        <div>
          <a><Icon name='user'/>{user.username}</a>
          { showEditButton &&
-           <Link className='right floated' to={`/myprojects/${id}/edit`}><Icon name='edit' />Edit </Link>
+           <Link className='right floated' to={`/myprojects/${id}/edit`}><Icon name='edit' />Editar </Link>
          }
         </div>
      </Card.Content>
