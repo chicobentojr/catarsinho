@@ -22,7 +22,7 @@ class MyProjectsPage extends Component {
 
   __renderProjectCard(project) {
     return (
-      <ProjectCard {...project} />
+      <ProjectCard {...project} showEditButton={true} />
     )
   }
 

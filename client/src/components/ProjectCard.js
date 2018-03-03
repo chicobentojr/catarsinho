@@ -1,18 +1,28 @@
 import React from 'react';
 import moment from 'moment';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-const ProjectCard = ({title, description, value, image, created_at, user}) => {
+const ProjectCard = ({id, title, description, value, image, created_at, user, showEditButton}) => {
   return (
     <Card fluid>
-     <Image alt='image' src={image ? image : 'http://via.placeholder.com/100x300'} />
+     <Image
+       src={image ? image : 'http://via.placeholder.com/100x300'}
+       label={{ as: 'a', color: 'green', content: `R$ ${value}`, ribbon: true }} />
      <Card.Content>
-       <Card.Header>{title}</Card.Header>
-       <Card.Meta>{moment(created_at).fromNow()} by {user.username}</Card.Meta>
+       <Card.Header as='a'>{title}</Card.Header>
+       <Card.Meta>
+         {moment(created_at).fromNow()}
+       </Card.Meta>
        <Card.Description>{description}</Card.Description>
      </Card.Content>
      <Card.Content extra>
-       <a><Icon name='dollar' />{value}</a>
+       <div>
+         <a><Icon name='user'/>{user.username}</a>
+         { showEditButton &&
+           <Link className='right floated' to={`/myprojects/${id}/edit`}><Icon name='edit' />Edit </Link>
+         }
+        </div>
      </Card.Content>
    </Card>
   )

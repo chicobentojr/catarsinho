@@ -3,8 +3,9 @@ import { Container, Form, Button, Dimmer, Image, Segment, Header as SemanticHead
 import Header from '../components/Header';
 import api from '../utils/api';
 
-class CreateProjectPage extends Component {
+class EditProjectPage extends Component {
   state = {
+    id: this.props.match.params.id,
     title: '',
     description: '',
     value: '',
@@ -27,7 +28,7 @@ class CreateProjectPage extends Component {
       image: this.state.image
     }
 
-    api.createProject(project).then((response => {
+    api.updateProject(this.state.id, project).then((response => {
       console.log(response);
       this.setState({loading: false});
       this.props.history.push('/myprojects');
@@ -50,6 +51,17 @@ class CreateProjectPage extends Component {
     if (this.fileUpload) {
       this.fileUpload.click()
     }
+  }
+
+  componentDidMount() {
+    this.setState({loading: true});
+
+    api.loadProject(this.state.id).then((response => {
+      this.setState({loading: false, ...response.data});
+    })).catch((error) => {
+      console.log(error);
+      this.setState({loading: false});
+    })
   }
 
   render () {
@@ -76,17 +88,17 @@ class CreateProjectPage extends Component {
             </Form.Field>
             <Form.Field>
               <label>Title</label>
-              <input onChange={(e) => { this.setState({title: e.target.value })}} placeholder='Title' required />
+              <input value={this.state.title} onChange={(e) => { this.setState({title: e.target.value })}} placeholder='Title' required />
             </Form.Field>
             <Form.Field>
               <label>Description</label>
-              <input onChange={(e) => { this.setState({description: e.target.value })}} placeholder='Description' required />
+              <input value={this.state.description} onChange={(e) => { this.setState({description: e.target.value })}} placeholder='Description' required />
             </Form.Field>
             <Form.Field>
               <label>Value</label>
-              <input onChange={(e) => { this.setState({value: e.target.value })}} type='number' max='500' placeholder='Value' required />
+              <input value={this.state.value} onChange={(e) => { this.setState({value: e.target.value })}} type='number' max='500' placeholder='Value' required />
             </Form.Field>
-            <Button type='submit'>Create</Button>
+            <Button type='submit'>Update</Button>
           </Form>
           </Segment>
         </Container>
@@ -95,4 +107,4 @@ class CreateProjectPage extends Component {
   }
 }
 
-export default CreateProjectPage;
+export default EditProjectPage;

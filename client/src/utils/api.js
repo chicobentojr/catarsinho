@@ -40,9 +40,14 @@ const logoutUser = () => {
 
 const loadUserProjects = () => instance.get('myprojects/');
 const loadProjects = () => instance.get('projects/');
+const loadProject = (id) => instance.get(`projects/${id}`);
 
 const createProject = (project) => {
   return instance.post('projects/', {...project});
+}
+
+const updateProject = (id, project) => {
+  return instance.put(`projects/${id}/`, {...project});
 }
 
 export default {
@@ -51,5 +56,7 @@ export default {
   loadUserProjects,
   logoutUser,
   loadProjects,
-  createProject
+  createProject,
+  loadProject,
+  updateProject
 }

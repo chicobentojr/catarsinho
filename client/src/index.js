@@ -10,6 +10,7 @@ import LoginPage from './containers/LoginPage';
 import MyProjectsPage from './containers/MyProjectsPage';
 import LogoutPage from './containers/LogoutPage';
 import CreateProjectPage from './containers/CreateProjectPage';
+import EditProjectPage from './containers/EditProjectPage';
 
 ReactDOM.render(
   <Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route exact path="/logout" component={LogoutPage} />
       <Route exact path="/myprojects" component={MyProjectsPage} />
       <Route exact path="/myprojects/create" component={CreateProjectPage} />
+      <Route exact path="/myprojects/:id/edit" component={EditProjectPage} />
     </div>
   </Router>,
   document.getElementById('root')
