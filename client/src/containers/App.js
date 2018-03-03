@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../components/Header'
 import { Container, Segment } from 'semantic-ui-react';
-import api from '../utils/api';
 
 class App extends Component {
   render() {
-    console.log('app.js', api.user);
     return (
       <div className="App">
         <Header></Header>

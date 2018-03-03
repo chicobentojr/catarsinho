@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { Container, Segment } from 'semantic-ui-react';
+import api from '../utils/api';
 import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
-import api from '../utils/api';
 
-class MyProjectsPage extends Component {
+class ProjectsPage extends Component {
   state = {
-    username: '',
-    password: '',
     loading: true,
     projects: []
   }
 
   componentDidMount() {
-    api.loadUserProjects().then((response) => {
+    api.loadProjects().then((response) => {
       this.setState({ projects: response.data, loading: false});
     }).catch((error) => {
       console.log(error);
@@ -40,4 +38,4 @@ class MyProjectsPage extends Component {
   }
 }
 
-export default MyProjectsPage;
+export default ProjectsPage;

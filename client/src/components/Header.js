@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Menu, Dropdown } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import simpleStore from '../utils/simpleStore';
 
 const Header = () => {
