@@ -38,7 +38,6 @@ class EditProjectPage extends Component {
     }
 
     api.updateProject(this.state.id, project).then((response => {
-      console.log(response);
       this.setState({loading: false});
       this.props.history.push('/myprojects');
     })).catch((error) => {

@@ -10,11 +10,13 @@ let instance = axios.create({
 });
 
 const setToken = (token) => {
-  Object.assign(instance.defaults, {
-    headers: {
-      'Authorization': token ? `JWT ${token}` : ''
-    }
-  })
+  if (token) {
+    Object.assign(instance.defaults, {
+      headers: {
+        'Authorization': `JWT ${token}`
+      }
+    })
+  }
 }
 
 const registerUser = (username, password) => {

@@ -23,9 +23,7 @@ class RegisterPage extends Component {
     this.setState({loading: true, warning: false});
 
     api.registerUser(this.state.username, this.state.password).then((response => {
-      console.log(response);
       api.authUser(this.state.username, this.state.password).then((response => {
-        console.log(response);
         this.setState({loading: false});
         this.props.history.push('/myprojects');
       })).catch((error) => {
