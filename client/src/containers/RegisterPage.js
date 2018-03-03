@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Form, Button, Segment, Header as SemanticHeader } from 'semantic-ui-react';
-import Header from '../components/Header';
+import { Form, Button } from 'semantic-ui-react';
 import FormMessages from '../components/FormMessages';
 import api from '../utils/api';
+import App from './App';
 
 class RegisterPage extends Component {
   state = {
@@ -40,28 +40,20 @@ class RegisterPage extends Component {
 
   render () {
     return (
-      <div>
-        <Header></Header>
-        <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>Registre-se</SemanticHeader>
-          <Segment>
-            <Form
-              onSubmit={this.__handleSubmit} loading={this.state.loading}
-              error={this.state.error} warning={this.state.warning}>
-            <Form.Field>
-              <label>Usuário</label>
-              <input onChange={(e) => { this.setState({username: e.target.value })}} placeholder='Usuário' required />
-            </Form.Field>
-            <Form.Field>
-              <label>Senha</label>
-              <input onChange={(e) => { this.setState({password: e.target.value })}} type='password' placeholder='Senha' required />
-            </Form.Field>
-            <Button primary type='submit'>Registrar</Button>
-              <FormMessages />
-          </Form>
-          </Segment>
-        </Container>
-      </div>
+      <App title='Registre-se' loading={this.state.loading}>
+        <Form onSubmit={this.__handleSubmit} error={this.state.error} warning={this.state.warning}>
+          <Form.Field>
+            <label>Usuário</label>
+            <input onChange={(e) => { this.setState({username: e.target.value })}} placeholder='Usuário' required />
+          </Form.Field>
+          <Form.Field>
+            <label>Senha</label>
+            <input onChange={(e) => { this.setState({password: e.target.value })}} type='password' placeholder='Senha' required />
+          </Form.Field>
+          <Button primary type='submit'>Registrar</Button>
+            <FormMessages />
+        </Form>
+      </App>
     )
   }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Segment, Header as SemanticHeader } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import api from '../utils/api';
-import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
+import App from './App';
 
 class ProjectsPage extends Component {
   state = {
@@ -26,15 +26,11 @@ class ProjectsPage extends Component {
 
   render () {
     return (
-      <div>
-        <Header></Header>
-        <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>Projetos Recentes</SemanticHeader>
-          <Segment loading={this.state.loading}>
-            {this.state.projects.map(this.__renderProjectCard)}
-          </Segment>
-        </Container>
-      </div>
+      <App loading={this.state.loading} title='Projetos Recentes'>
+        <Card.Group itemsPerRow={2}>
+          {this.state.projects.map(this.__renderProjectCard)}
+        </Card.Group>
+      </App>
     )
   }
 }

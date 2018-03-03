@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Segment, Header as SemanticHeader } from 'semantic-ui-react';
+import { Card, Header as SemanticHeader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
 import api from '../utils/api';
+import App from './App';
 
 class MyProjectsPage extends Component {
   state = {
@@ -30,22 +30,18 @@ class MyProjectsPage extends Component {
 
   render () {
     return (
-      <div>
-        <Header></Header>
-        <Container text style={{ marginTop: '7em' }}>
-          <SemanticHeader size='large'>Meus Projetos</SemanticHeader>
-          <Segment loading={this.state.loading}>
-            {this.state.projects.length > 0 ? (
-              this.state.projects.map(this.__renderProjectCard)
-            ) : (
-              <div>
-                <SemanticHeader size='medium'>Você ainda não tem nenhum projeto cadastrado.</SemanticHeader>
-                <Link to='/myprojects/create'>Crie agora.</Link>
-              </div>
-            )}
-          </Segment>
-        </Container>
-      </div>
+      <App title='Meus Projetos' loading={this.state.loading}>
+        {this.state.projects.length > 0 ? (
+          <Card.Group itemsPerRow={2}>
+            { this.state.projects.map(this.__renderProjectCard) }
+          </Card.Group>
+        ) : (
+          <div>
+            <SemanticHeader size='medium'>Você ainda não tem nenhum projeto cadastrado.</SemanticHeader>
+            <Link to='/myprojects/create'>Crie agora.</Link>
+          </div>
+        )}
+      </App>
     )
   }
 }
