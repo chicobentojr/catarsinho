@@ -6,6 +6,7 @@ from catarsinho import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'projects', views.ProjectViewSet)
+router.register(r'myprojects', views.AllProjectViewSet, base_name='my-projects')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
