@@ -1,37 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Menu } from 'semantic-ui-react';
+import { Container, Menu, Dropdown } from 'semantic-ui-react';
+import simpleStore from '../utils/simpleStore';
 
 const Header = () => {
   return (
-    <Menu fixed='top' inverted>
+    <Menu fixed='top' color='green' inverted>
       <Container>
         <Menu.Item as='a' header>
           <Link to='/'>Catarsinho</Link>
         </Menu.Item>
-        <Menu.Item position='right' as='a'>
-          <Link to='register'>Register</Link>
-        </Menu.Item>
 
-        {/*
-          <Dropdown item simple text='Dropdown'>
-          <Dropdown.Menu>
-            <Dropdown.Item>List Item</Dropdown.Item>
-            <Dropdown.Item>List Item</Dropdown.Item>
-            <Dropdown.Divider/>
-            <Dropdown.Header>Header Item</Dropdown.Header>
-            <Dropdown.Item>
-              <i className='dropdown icon'/>
-              <span className='text'>Submenu</span>
-              <Dropdown.Menu>
-                <Dropdown.Item>List Item</Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown.Item>
-            <Dropdown.Item>List Item</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      */}
+        {simpleStore.user.isAuthenticated ? (
+          <Menu.Menu position='right' color='green' inverted>
+            <Menu.Item as='a'><Link to='myprojects'>My Projects</Link></Menu.Item>
+            <Menu.Item as='a'><Link to='logout'>Logout</Link></Menu.Item>
+          </Menu.Menu>
+        ) : (
+          <Menu.Menu position='right' color='green' inverted>
+            <Menu.Item as='a'><Link to='login'>Login</Link></Menu.Item>
+          </Menu.Menu>
+        )}
       </Container>
     </Menu>
   )
