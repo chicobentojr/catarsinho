@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from catarsinho.models import Project
 
@@ -16,16 +16,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return user
 
 
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ('url', 'name')
-
-
 class ProjectSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-    
+
     class Meta:
         model = Project
         fields = '__all__'
