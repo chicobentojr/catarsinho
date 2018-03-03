@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Menu } from 'semantic-ui-react';
+import { Container, Menu, Icon } from 'semantic-ui-react';
 import simpleStore from '../utils/simpleStore';
 
 const Header = () => {
@@ -13,6 +13,7 @@ const Header = () => {
 
         {simpleStore.user.isAuthenticated ? (
           <Menu.Menu position='right'>
+            <Menu.Item as='div'><Icon name='user' /> {simpleStore.user.username}</Menu.Item>
             <Menu.Item as='a'><Link to='/myprojects/create'>Create Project</Link></Menu.Item>
             <Menu.Item as='a'><Link to='/myprojects'>My Projects</Link></Menu.Item>
             <Menu.Item as='a'><Link to='/logout'>Logout</Link></Menu.Item>

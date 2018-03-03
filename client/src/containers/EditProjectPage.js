@@ -78,6 +78,7 @@ class EditProjectPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
+          <SemanticHeader size='large'>Edit Project {this.state.title}</SemanticHeader>
           <Segment>
             <Form
               onSubmit={this.__handleSubmit} loading={this.state.loading}

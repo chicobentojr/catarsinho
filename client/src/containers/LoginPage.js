@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Form, Button, Segment, Message } from 'semantic-ui-react';
+import { Container, Form, Button, Segment,
+  Message, Header as SemanticHeader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import api from '../utils/api';
@@ -25,7 +26,7 @@ class LoginPage extends Component {
     api.authUser(this.state.username, this.state.password).then((response => {
       console.log(response);
       this.setState({loading: false});
-      this.props.history.push('/');
+      this.props.history.push('/myprojects');
     })).catch((error) => {
       console.log(error);
       this.setState({loading: false, error: true});
@@ -37,6 +38,7 @@ class LoginPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
+          <SemanticHeader size='large'>Login</SemanticHeader>
           <Segment>
             <Form
               onSubmit={this.__handleSubmit} loading={this.state.loading}

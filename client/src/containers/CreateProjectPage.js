@@ -66,6 +66,7 @@ class CreateProjectPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
+          <SemanticHeader size='large'>Create Project</SemanticHeader>
           <Segment>
             <Form
               onSubmit={this.__handleSubmit} loading={this.state.loading}

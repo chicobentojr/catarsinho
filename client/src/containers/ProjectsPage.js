@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Header as SemanticHeader } from 'semantic-ui-react';
 import api from '../utils/api';
 import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
@@ -29,6 +29,7 @@ class ProjectsPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
+          <SemanticHeader size='large'>New Projects</SemanticHeader>
           <Segment loading={this.state.loading}>
             {this.state.projects.map(this.__renderProjectCard)}
           </Segment>

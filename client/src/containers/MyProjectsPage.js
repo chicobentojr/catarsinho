@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Header as SemanticHeader } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
 import api from '../utils/api';
@@ -31,8 +32,16 @@ class MyProjectsPage extends Component {
       <div>
         <Header></Header>
         <Container text style={{ marginTop: '7em' }}>
+          <SemanticHeader size='large'>My Projects</SemanticHeader>
           <Segment loading={this.state.loading}>
-            {this.state.projects.map(this.__renderProjectCard)}
+            {this.state.projects.length > 0 ? (
+              this.state.projects.map(this.__renderProjectCard)
+            ) : (
+              <div>
+                <SemanticHeader size='medium'>You don't have any project created.</SemanticHeader>
+                <Link to='/myprojects/create'>Create now</Link>
+              </div>
+            )}
           </Segment>
         </Container>
       </div>
